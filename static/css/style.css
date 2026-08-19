@@ -1,0 +1,343 @@
+/* ==========================================================================
+   Global Theme Configuration & Variables
+   ========================================================================== */
+:root {
+    --bg-main: #060814;
+    --card-bg: rgba(10, 15, 36, 0.65);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --neon-cyan: #00f2fe;
+    --neon-purple: #4facfe;
+    --text-primary: #ffffff;
+    --text-secondary: #8f9cae;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* Base Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Ambient Background Glow Effects */
+.bg-glow-1, .bg-glow-2 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+}
+.bg-glow-1 {
+    top: -10%;
+    left: -10%;
+    background: var(--neon-cyan);
+}
+.bg-glow-2 {
+    bottom: -10%;
+    right: -10%;
+    background: var(--neon-purple);
+}
+
+/* Application Layout Container */
+.app-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 580px;
+    padding: 20px;
+}
+
+/* Main Dashboard UI Card */
+.dashboard-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Result Fade-in Entrance Micro-Animation */
+.result-fade-in {
+    animation: cardEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Brand Header Typography */
+.brand-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.ai-badge {
+    display: inline-block;
+    background: rgba(0, 242, 254, 0.1);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    color: var(--neon-cyan);
+    font-size: 11px;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+}
+
+.success-badge {
+    border-color: var(--neon-cyan) !important;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+}
+
+.brand-header h1 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.brand-header h1 span {
+    background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Upload View Styling Requirements (index.html)
+   ========================================================================== */
+.hidden-input {
+    display: none !important;
+}
+
+.dropzone-area {
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-bottom: 25px;
+}
+
+.dropzone-area:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 242, 254, 0.02);
+}
+
+.dropzone-area.file-loaded {
+    border-color: var(--neon-purple);
+    background: rgba(79, 172, 254, 0.04);
+}
+
+.file-card-trigger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.icon-pulse {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+.file-card-trigger:hover .icon-pulse {
+    color: var(--neon-cyan);
+    background: rgba(0, 242, 254, 0.1);
+    transform: scale(1.05);
+}
+
+.icon-pulse svg {
+    width: 28px;
+    height: 28px;
+}
+
+.status-filename {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-specification {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+/* Action Execution Buttons */
+.action-submit-btn {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-cyan) 100%);
+    border: none;
+    padding: 16px 30px;
+    border-radius: 14px;
+    color: #040612;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 242, 254, 0.25);
+}
+
+.action-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 242, 254, 0.4);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   Output View Display Framework (result.html)
+   ========================================================================== */
+.results-panel {
+    margin-bottom: 35px;
+}
+
+.prediction-display-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.prediction-display-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--neon-purple), var(--neon-cyan));
+}
+
+.metric-label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.detected-emotion {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Confidence Metrics Gauge Trackers */
+.gauge-container {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.gauge-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+}
+
+.gauge-percentage {
+    color: var(--neon-cyan) !important;
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+.gauge-track {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.gauge-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-purple) 0%, var(--neon-cyan) 100%);
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+}
+
+/* Back Action Secondary Overrides */
+.secondary-btn {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: var(--text-primary) !important;
+    box-shadow: none !important;
+}
+
+.secondary-btn:hover {
+    border-color: var(--neon-cyan) !important;
+    color: var(--neon-cyan) !important;
+    background: rgba(0, 242, 254, 0.02) !important;
+    box-shadow: 0 5px 20px rgba(0, 242, 254, 0.1) !important;
+}

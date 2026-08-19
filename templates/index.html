@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Emotion Recognition Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Futuristic Animated Background Elements -->
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="app-wrapper">
+        <main class="dashboard-card">
+            
+            <!-- Branding Header Section -->
+            <header class="brand-header">
+                <div class="ai-badge">Neural Network Active</div>
+                <h1>Speech Emotion <span>Recognition AI</span></h1>
+                <p class="subtitle">Deep Learning analysis framework driven by Convolutional Architecture</p>
+            </header>
+
+            <!-- Processing Form Core -->
+            <section class="upload-zone">
+                <form action="/predict" method="POST" enctype="multipart/form-data" id="analysisForm">
+                    
+                    <div class="dropzone-area">
+                        <input type="file" name="audio" accept=".wav" required id="audioFile" class="hidden-input">
+                        
+                        <label for="audioFile" class="file-card-trigger">
+                            <div class="icon-pulse">
+                                <svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                                    <path d="M19 10v1a7 7 0 0 1-14 0v-1M12 19v4M8 23h8"/>
+                                </svg>
+                            </div>
+                            <span id="fileName" class="status-filename">Select Audio File</span>
+                            <span class="file-specification">Supported Format: WAV Audio Only</span>
+                        </label>
+                    </div>
+
+                    <button class="action-submit-btn" type="submit">
+                        <span class="btn-text">Execute Predict Sequence</span>
+                        <span class="btn-glow"></span>
+                    </button>
+
+                </form>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Interactive script handling name mapping dynamic visualization -->
+    <script>
+        const fileInput = document.getElementById('audioFile');
+        const fileText = document.getElementById('fileName');
+        const triggerArea = document.querySelector('.dropzone-area');
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                fileText.textContent = e.target.files[0].name;
+                triggerArea.classList.add('file-loaded');
+            } else {
+                fileText.textContent = "Select Audio File";
+                triggerArea.classList.remove('file-loaded');
+            }
+        });
+    </script>
+</body>
+</html>

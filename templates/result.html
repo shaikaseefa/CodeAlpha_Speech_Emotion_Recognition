@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Analysis Complete</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Futuristic Animated Background Elements -->
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="app-wrapper">
+        <main class="dashboard-card result-fade-in">
+            
+            <!-- Analysis Complete Header Section -->
+            <header class="brand-header">
+                <div class="ai-badge success-badge">Analysis Sequence Complete</div>
+                <h1>Classification <span>Engine Output</span></h1>
+                <p class="subtitle">Feature extraction metrics completed via Convolutional layers</p>
+            </header>
+
+            <!-- Results Metrics Display Panel -->
+            <section class="results-panel">
+                
+                <!-- Predicted Emotion Callout Box -->
+                <div class="prediction-display-box">
+                    <span class="metric-label">Detected Emotion State</span>
+                    <!-- Flask variables injected dynamically -->
+                    <h2 class="detected-emotion">{{ emotion }}</h2>
+                </div>
+
+                <!-- Confidence Gauge Bar Tracker -->
+                <div class="gauge-container">
+                    <div class="gauge-header">
+                        <span>Model Confidence Accuracy</span>
+                        <span class="gauge-percentage">{{ confidence }}%</span>
+                    </div>
+                    <div class="gauge-track">
+                        <!-- Dynamic inline style configuration mapped using Flask variable -->
+                        <div class="gauge-fill" style="--pf: {{ confidence }}%; width: var(--pf);"></div>div></div>"></div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Action Matrix Footer Actions -->
+            <footer class="result-actions">
+                <a href="/" class="action-submit-btn secondary-btn">
+                    <span class="btn-text">Analyze Another File</span>
+                </a>
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
